@@ -1,41 +1,28 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { PeopleService } from './people.service';
+
 @Component({
-selector:'app-people',
-templateUrl:'./people.component.html',
-styleUrls:['./people.component.css']
-
+  selector: 'app-people',
+  templateUrl: './people.component.html',
+  styleUrls: ['./people.component.css']
 })
+export class PeopleComponent implements OnInit {
+  isAddingNewPerson:boolean = false;
+  people = [];
 
-export class PeopleComponent implements OnInit{
-people=[];
+  constructor(private peopleService: PeopleService) { }
 
-constructor(){}
-ngOnInit(){
-this.people=[
-{
-name:'Neha Pradhan',
-status:'currently coding',
-website:{
-url:'https://juristr.com',
-name:'juristr.com'
-},
-twitter:{
-url:'https://twitter.com/juristr',
-name:'@juristr'
-}
-},
-{
-name:'Nita Pradhan',
-status:'playing with AoT',
-twitter:{
-url:'https://twitter.com/nitapradhan',
-name:'@nitapradhan'
-}
-}
-];
-}
-onSubmit(newPerson){
-this.people.push(newPerson);
-}
+  ngOnInit() {
+    this.peopleService.fetchPeople()
+      .subscribe(data => {
+        this.people = data;
+      });
+  }
+
+  onSubmit(newPerson) {
+    this.people.push(newPerson);
+    this.isAddingNewPerson = false;
+  }
 
 }

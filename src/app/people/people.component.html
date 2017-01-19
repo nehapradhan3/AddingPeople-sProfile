@@ -1,51 +1,11 @@
+
 <p>
-  neha makes people work :D
+  neha makes people work! :D
 </p>
-<button>Add new person</button>
-<form #f="ngForm"(ngSubmit)="onSubmit(f.value)">
-  <div>
-    <label> Name:</label>
-    <input type="text" ngModel name="name">
-  </div>
-  <div>
-    <label>Status:</label>
-    <input type="text" ngModel name="status">
-  </div>
-  <div ngModelGroup="website">
-    <label> Website:</label>
-    <input type="text" ngModel name="name">
-    <input type="text" ngModel name="url">
-  </div>
-  <div ngModelGroup="twitter">
-    <label> Twitter:</label>
-    <input type="text" ngModel name="name">
-    <input type="text" ngModel name="url">
-  </div>
-  <button type="submit"> Save</button>
-  <button> Cancel</button>
-</form>
-{{f.value|json}}
+<button *ngIf="!isAddingNewPerson" (click)="isAddingNewPerson = !isAddingNewPerson">Add new person</button>
+
+<new-person *ngIf="isAddingNewPerson" (onSubmitted)="onSubmit($event)" (onCancel)="isAddingNewPerson = false"></new-person>
+
 <hr>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<profile [person]="person" *ngFor="let person of people"></profile>
+<profile [person]="person"  *ngFor="let person of people"></profile>

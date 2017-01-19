@@ -1,21 +1,29 @@
-.user-profile{
-  width:350px;
+.user-profile {
+  width: 350px;
   height:86px;
-  border:1px solid #ccc;
-  margin-bottom:15px;
+  border: 1px solid #ccc;
+  margin-bottom: 15px;
   clear:both;
 }
-.avatar{
-  width:80px;
+
+.avatar {
+  width: 80px;
   height:86px;
-  border:1px solid gray;
+  border: 1px solid gray;
   float:left;
 }
-.profile{
-  margin-left:10px;
-  display:inline-block;
+
+.avatar img {
+  width: 80px;
+  height:86px;
 }
-span{
+
+.profile {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+span {
   display:block;
-  padding-bottom:5px;
+  padding-bottom: 5px;
 }
